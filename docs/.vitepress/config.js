@@ -7,7 +7,7 @@ export default defineConfig({
 	lang: 'zh-CN',
 	lastUpdated: true,
 	head: [
-		['link', { rel: 'icon', type: 'image/svg+xml', href: '/IamZJT.png' }]
+		['link', { rel: 'icon', href: '/IamZJT.png' }]
 	],
 	vue: {
 		reactivityTransform: true
