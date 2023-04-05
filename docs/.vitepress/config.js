@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress';
+import autoGetSidebarOptionBySrcDir from './siderBar';
+
+const path = require('path');
 
 export default defineConfig({
 	base: '/person-site',
@@ -25,17 +28,38 @@ export default defineConfig({
 			}
 		],
 		nav: [
-			{ text: '文章', link: '/article/index', activeMatch: '/article/' },
-			{ text: '关于', link: '/about/index', activeMatch: '/about/' }
+			{
+				text: '前端',
+				items: [
+					{ text: '杂谈', link: '/front-end/index' }
+				]
+			},
+			{ text: '年终总结', link: '/year-end-summary/2020-年末，大总结' },
+			{ text: 'mini-vue3', link: '/mini-vue3/reactivity/01_vue3源码的介绍' },
+			{ text: '有趣的', link: '/funny/index' },
+			{ text: '关于', link: '/about/index' }
 		],
 		sidebar: {
-			'/article/': [
-				{
-					items: [
-						{ text: '归档', link: '/article/index' }
-					]
-				}
-			]
+			'/front-end/': autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../front-end')
+			),
+			'/year-end-summary/': autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../year-end-summary'),
+				'年终总结'
+			),
+			'/mini-vue3/': autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../mini-vue3/reactivity'),
+				'reactivity篇'
+			).concat(autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../mini-vue3/runtime'),
+				'runtime篇'
+			)).concat(autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../mini-vue3/compiler'),
+				'compiler篇'
+			)),
+			'/funny/': autoGetSidebarOptionBySrcDir(
+				path.resolve(__dirname, '../funny')
+			)
 		}
 	}
 });

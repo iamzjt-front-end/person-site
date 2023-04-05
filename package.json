@@ -12,8 +12,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vueuse/core": "9.8.2",
-    "vitepress": "1.0.0-alpha.33",
-    "vue": "3.2.45"
+    "@vueuse/core": "9.13.0",
+    "vitepress": "1.0.0-alpha.65",
+    "vue": "3.2.47"
+  },
+  "dependencies": {
+    "directory-tree": "^3.5.1"
   }
 }
